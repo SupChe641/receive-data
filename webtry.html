@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Display</title>
+</head>
+<body>
+    <h1>Data Received from Python</h1>
+    <div id="data-display"></div>
+
+    <script>
+        // JavaScript code to display the data
+        fetch("/get_data")  // Make a GET request to a Flask route
+            .then(response => response.json())
+            .then(data => {
+                const dataDisplay = document.getElementById("data-display");
+                dataDisplay.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            })
+            .catch(error => {
+                console.error("Failed to fetch data:", error);
+            });
+    </script>
+</body>
+</html>
